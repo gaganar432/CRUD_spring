@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Add Movie Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ff4b2b, #ff416c);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 400px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #ff416c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ff4b2b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Add Movie</h2>
+    <form th:action="@{/addmovies}" th:object="${movie}" method="post">
+      <label for="MovieName">Movie Name</label>
+      <input type="text" id="MovieName" th:field="*{movieName}" placeholder="Enter movie name" required>
+
+      <label for="Hero">Hero</label>
+      <input type="text" id="Hero" th:field="*{hero}" placeholder="Enter hero name" required>
+
+      <label for="ReleaseDate">Release Date</label>
+      <input type="date" id="ReleaseDate" th:field="*{releaseDate}" required>
+
+      <label for="Description">Description</label>
+      <textarea id="Description" th:field="*{description}" placeholder="Enter description" required></textarea>
+
+      <label for="Image">Image (Paste Link)</label>
+      <input type="text" id="Image" th:field="*{image}" placeholder="Paste image link here" required>
+
+      <button type="submit">Add Movie</button>
+    </form>
+  </div>
+</body>
+</html>
