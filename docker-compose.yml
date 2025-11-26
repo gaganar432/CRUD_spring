@@ -1,9 +1,32 @@
 version: '3.8'
 
 services:
+  db:
+    image: mysql:8.0
+    container_name: mysqldb
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: Movie
+    ports:
+      - "3307:3306"
+    networks:
+      - springnet
+    restart: always
+
   app:
     image: gaganaraj2001/autospring:latest
     container_name: autospring
+    depends_on:
+      - db
     ports:
       - "9090:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/Movie
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    networks:
+      - springnet
     restart: always
+
+networks:
+  springnet:
