@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven'    // Use the Maven tool you installed in Jenkins
+        maven 'maven'
     }
 
     stages {
@@ -51,9 +51,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    docker compose pull
-                    docker compose down || true
-                    docker compose up -d
+                    docker-compose pull
+                    docker-compose down || true
+                    docker-compose up -d
                 '''
             }
         }
