@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  app:
+    image: gaganaraj2001/autospring:latest
+    container_name: autospring
+    ports:
+      - "8080:8080"
+    restart: always
